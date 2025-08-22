@@ -1,0 +1,38 @@
+#include "moNa2_L.keymap"
+
+&trackball {
+    // Trackball-specific behaviors for different layers
+    
+    // Arrow key mode for number layers
+    arrows {
+        layers = <NUM_MAC NUM_WIN>;
+        bindings =
+            <&kp RIGHT_ARROW>,
+            <&kp LEFT_ARROW>,
+            <&kp UP_ARROW>,
+            <&kp DOWN_ARROW>;
+
+        tick = <10>;
+        wait-ms = <5>;
+        tap-ms = <5>;
+    };
+
+    // Volume control for keyboard settings layer
+    volume {
+        layers = <KBD_SETTING>;
+        bindings =
+            <&kp C_VOLUME_UP>,
+            <&kp C_VOLUME_DOWN>,
+            <&kp C_BRIGHTNESS_INC>,
+            <&kp C_BRIGHTNESS_DEC>;
+
+        wait-ms = <5>;
+        tap-ms = <5>;
+    };
+};
+
+// Input-Processor based Auto-Mouse Layer setup
+// Mouse click will trigger AML exit after 250ms
+&mkp_input_listener {
+    input-processors = <&zip_temp_layer AML 250>;
+};
